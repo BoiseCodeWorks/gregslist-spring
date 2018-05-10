@@ -42,7 +42,16 @@ loadCars()
       loadCars()
     })
   }
-
+  this.discountCar = function discountCar(id, price){
+       $.ajax({
+      method: 'PUT',
+      url: baseUrl + '/' + id,
+      contentType: 'application/JSON',
+      data: JSON.stringify({price: price * .9})
+    }).then(res =>{
+      loadCars()
+    })
+  }
 
 
 

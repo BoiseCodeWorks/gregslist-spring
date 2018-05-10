@@ -17,6 +17,7 @@ function CarController(){
         <h3>Model: ${car.model}</h3>
         <h3>Year: ${car.year}</h3>
         <h3>Price: ${car.price}</h3>
+        <button onclick="app.controllers.carController.discountCar('${car._id}',${car.price})">Discount</button>
         <p>Description: ${car.description}</p>
         <button onclick="app.controllers.carController.deleteCar('${car._id}')">Delete</button>
       </div>
@@ -38,12 +39,14 @@ function CarController(){
       price: data.price.value
     }
     carService.addCar(newCar)
+    data.reset()
   }
   this.deleteCar = function deleteCar(id) {
-    debugger
     carService.deleteCar(id)
   }
-
+  this.discountCar = function discountCar(id, price){
+    carService.discountCar(id, price)
+  }
 
 
 
