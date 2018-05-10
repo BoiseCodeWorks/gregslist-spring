@@ -34,6 +34,15 @@ loadCars()
     })
   }
 
+  this.deleteCar = function deleteCar(id) {
+    $.ajax ({
+      method: 'DELETE',
+      url: baseUrl + '/' + id
+    }).then(res => {
+      loadCars()
+    })
+  }
+
 
 
 

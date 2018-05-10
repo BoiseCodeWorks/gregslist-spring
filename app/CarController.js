@@ -18,6 +18,7 @@ function CarController(){
         <h3>Year: ${car.year}</h3>
         <h3>Price: ${car.price}</h3>
         <p>Description: ${car.description}</p>
+        <button onclick="app.controllers.carController.deleteCar('${car._id}')">Delete</button>
       </div>
     ` 
     }
@@ -28,7 +29,6 @@ function CarController(){
   //PUBLIC
   this.addCar = function addCar(e){
     e.preventDefault();
-    debugger
     var data = e.target
     var newCar = {
       img: data.img.value,
@@ -39,7 +39,10 @@ function CarController(){
     }
     carService.addCar(newCar)
   }
-
+  this.deleteCar = function deleteCar(id) {
+    debugger
+    carService.deleteCar(id)
+  }
 
 
 
