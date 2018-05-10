@@ -4,27 +4,26 @@ function CarController(){
   //COMMUNICATION WITH THE SERVICE
 
   //PRIVATE
-  var carService = new CarService()
+  var carService = new CarService(drawCars)
 
-  function drawCars(){
-    var cars = carService.getCars()
+  function drawCars(cars){
     var template = ''
     for (let i = 0; i < cars.length; i++) {
       const car = cars[i];
       template += `
       <div>
-        <img src="${car.img}" alt="">
+        <img src="${car.imgUrl}" alt="">
         <h3>Make: ${car.make}</h3>
         <h3>Model: ${car.model}</h3>
         <h3>Year: ${car.year}</h3>
         <h3>Price: ${car.price}</h3>
+        <p>Description: ${car.description}</p>
       </div>
     ` 
     }
     document.getElementById('cars').innerHTML = template
   }
 
-drawCars()
 
   //PUBLIC
   this.addCar = function addCar(e){
