@@ -38,7 +38,6 @@ function CarController(){
       price: data.price.value
     }
     carService.addCar(newCar)
-    drawCars()
   }
 
 

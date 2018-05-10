@@ -6,12 +6,12 @@ function CarService(cb){
   
 
   function Car(img, year, model, make, price, description){
-    this.imgUrl = img
+    this.imgUrl = img || "//placehold.it/200x200"
     this.year = year
     this.model = model
     this.make = make
     this.price = price
-    this.description = description
+    this.description = description || "No description provided"
    }
 
 
@@ -28,7 +28,10 @@ loadCars()
 
   this.addCar = function addCar(car){
     var newCar = new Car(car.img, car.year, car.model, car.make, car.price)
-    cars.unshift(newCar)
+    $.post(baseUrl, newCar)
+    .then(res=>{
+      loadCars()
+    })
   }
 
 
